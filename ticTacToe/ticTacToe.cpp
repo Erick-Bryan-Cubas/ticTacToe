@@ -394,17 +394,17 @@ void MainFrame::EndGame() {
 	}
 	else {
 		if (victorious == 1) {
-			strcpy(mensagem, "X - Player 1 wins!");
+			strcpy(mensagem, "X - Player 1 wins! ");
 		}
 		else {
 			if (victorious == 2) {
-				strcpy(mensagem, "O - Player 2 wins!");
+				strcpy(mensagem, "O - Player 2 wins! ");
 			}
 		}
 	}
 	
 	strcat(mensagem, "PLAY AGAIN?");
-	if (wxMessageBox(mensagem, "END OF MATCH!", wxYES_NO | wxICON_INFORMATION) == wxYES) {
+	if (wxMessageBox(mensagem, "END OF MATCH! ", wxYES_NO | wxICON_INFORMATION) == wxYES) {
 		initBoard(); // Reinicializando o banck-end
 		EnableGrid(); // Reinicializando o front-end
 	}
