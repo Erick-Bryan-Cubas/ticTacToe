@@ -42,7 +42,7 @@ int checBoard() {
 		if (player_1 == 3) {
 			return 1;
 		}
-		else if (player_2 = 3) {
+		else if (player_2 == 3) {
 			return 2;
 		}
 	}
