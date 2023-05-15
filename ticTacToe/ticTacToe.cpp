@@ -161,6 +161,33 @@ private:
 	void OnBtnLowMidClick(wxCommandEvent& event);
 	void OnBtnLowRightClick(wxCommandEvent& event);
 
+	// Métodos de reação à entrada do mouse
+	void OnBtnTopLeftEnterWindow(wxCommandEvent& event);
+	void OnBtnTopMidEnterWindow(wxCommandEvent& event);
+	void OnBtnTopRightEnterWindow(wxCommandEvent& event);
+
+	void OnBtnMidLeftEnterWindow(wxCommandEvent& event);
+	void OnBtnMidMidEnterWindow(wxCommandEvent& event);
+	void OnBtnMidRightEnterWindow(wxCommandEvent& event);
+
+	void OnBtnLowLeftEnterWindow(wxCommandEvent& event);
+	void OnBtnLowMidEnterWindow(wxCommandEvent& event);
+	void OnBtnLowRightEnterWindow(wxCommandEvent& event);
+
+	// Métodos de reação a saída do mouse
+	void OnBtnTopLeftLeaveWindow(wxCommandEvent& event);
+	void OnBtnTopMidLeaveWindow(wxCommandEvent& event);
+	void OnBtnTopRightLeaveWindow(wxCommandEvent& event);
+
+	void OnBtnMidLeftLeaveWindow(wxCommandEvent& event);
+	void OnBtnMidMidLeaveWindow(wxCommandEvent& event);
+	void OnBtnMidRightLeaveWindow(wxCommandEvent& event);
+
+	void OnBtnLowLeftLeaveWindow(wxCommandEvent& event);
+	void OnBtnLowMidLeaveWindow(wxCommandEvent& event);
+	void OnBtnLowRightLeaveWindow(wxCommandEvent& event);
+
+
 
 };
 
@@ -274,6 +301,30 @@ MainFrame::MainFrame() : wxFrame(NULL, wxID_ANY, "Tic Tac Toe") {
 	m_btnLowMid->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnLowMidClick), NULL, this);
 	m_btnLowRight->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnLowRightClick), NULL, this);
 
+
+	m_btnTopLeft->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnTopLeftEnterWindow), NULL, this);
+	m_btnTopMid->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnTopMidEnterWindow), NULL, this);
+	m_btnTopRight->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnTopRightEnterWindow), NULL, this);
+
+	m_btnMidLeft->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnMidLeftEnterWindow), NULL, this);
+	m_btnMidMid->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnMidMidEnterWindow), NULL, this);
+	m_btnMidRight->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnMidRightEnterWindow), NULL, this);
+
+	m_btnLowLeft->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnLowLeftEnterWindow), NULL, this);
+	m_btnLowMid->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnLowMidEnterWindow), NULL, this);
+	m_btnLowRight->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnLowRightEnterWindow), NULL, this);
+
+	m_btnTopLeft->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnTopLeftLeaveWindow), NULL, this);
+	m_btnTopMid->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnTopMidLeaveWindow), NULL, this);
+	m_btnTopRight->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnTopRightLeaveWindow), NULL, this);
+
+	m_btnMidLeft->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnMidLeftLeaveWindow), NULL, this);
+	m_btnMidMid->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnMidMidLeaveWindow), NULL, this);
+	m_btnMidRight->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnMidRightLeaveWindow), NULL, this);
+
+	m_btnLowLeft->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnLowLeftLeaveWindow), NULL, this);
+	m_btnLowMid->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnLowMidLeaveWindow), NULL, this);
+	m_btnLowRight->Connect(wxEVT_ENTER_WINDOW, wxCommandEventHandler(MainFrame::OnBtnLowRightLeaveWindow), NULL, this);
 }
 
 wxIMPLEMENT_APP(ticTacToe);
@@ -571,3 +622,293 @@ void MainFrame::OnBtnLowRightClick(wxCommandEvent& event) {
 	}
 }
 
+// Métodos de reação à entrada do mouse
+void MainFrame::OnBtnTopLeftEnterWindow(wxCommandEvent& event) {
+	if (m_btnTopLeft->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+
+void MainFrame::OnBtnTopMidEnterWindow(wxCommandEvent& event) {
+	if (m_btnTopMid->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnTopRightEnterWindow(wxCommandEvent& event) {
+	if (m_btnTopRight->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnMidLeftEnterWindow(wxCommandEvent& event) {
+	if (m_btnMidLeft->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnMidMidEnterWindow(wxCommandEvent& event) {
+	if (m_btnMidMid->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnMidRightEnterWindow(wxCommandEvent& event) {
+	if (m_btnMidRight->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnLowLeftEnterWindow(wxCommandEvent& event) {
+	if (m_btnLowLeft->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnLowMidEnterWindow(wxCommandEvent& event) {
+	if (m_btnLowMid->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnLowRightEnterWindow(wxCommandEvent& event) {
+	if (m_btnLowRight->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+// Métodos de reação a saída do mouse
+void MainFrame::OnBtnTopLeftLeaveWindow(wxCommandEvent& event) {
+	if (m_btnTopLeft->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnTopMidLeaveWindow(wxCommandEvent& event) {
+	if (m_btnTopMid->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnTopRightLeaveWindow(wxCommandEvent& event) {
+	if (m_btnTopRight->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnMidLeftLeaveWindow(wxCommandEvent& event) {
+	if (m_btnMidLeft->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnMidMidLeaveWindow(wxCommandEvent& event) {
+	if (m_btnMidMid->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnMidRightLeaveWindow(wxCommandEvent& event) {
+	if (m_btnMidRight->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnLowLeftLeaveWindow(wxCommandEvent& event) {
+	if (m_btnLowLeft->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnLowMidLeaveWindow(wxCommandEvent& event) {
+	if (m_btnLowMid->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
+
+void MainFrame::OnBtnLowRightLeaveWindow(wxCommandEvent& event) {
+	if (m_btnLowRight->IsEnabled()) {
+		strcpy(m_msgStatusBar, "");
+		strcpy(m_msgStatusBar, "Click here to mark a(n) ");
+		if (player == 1) {
+			strcat(m_msgStatusBar, "X!");
+		}
+		else {
+			if (player == 2) {
+				strcat(m_msgStatusBar, "O!");
+			}
+		}
+	}
+	SetStatusText(m_msgStatusBar);
+}
