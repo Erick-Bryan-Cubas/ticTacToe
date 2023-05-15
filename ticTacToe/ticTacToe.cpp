@@ -68,6 +68,7 @@ int checkBoard() {
 	player_1 = 0;
 	player_2 = 0;
 	for (line = 0; line < 3; line++) {
+		column = line;
 		if (board[line][column] == 1) player_1++;
 		else if (board[line][column] == 2) player_2++;
 	}
@@ -82,7 +83,7 @@ int checkBoard() {
 	// Verificando a diagonal secundária
 	player_1 = 0;
 	player_2 = 0;
-	column = 0;
+	column = 2;
 	for (line = 0; line < 3; line++) {
 		if (board[line][column] == 1) player_1++;
 		else if (board[line][column] == 2) player_2++;
@@ -99,8 +100,6 @@ int checkBoard() {
 	return 0;
 
 }
-
-
 
 
 class ticTacToe : public wxApp {
