@@ -28,7 +28,7 @@ void initBoard() {
 	}
 }
 
-int checBoard() {
+int checkBoard() {
 	int line, column, player_1, player_2;
 
 	// Verificando linhas
@@ -252,6 +252,12 @@ MainFrame::MainFrame() : wxFrame(NULL, wxID_ANY, "Tic Tac Toe") {
 
 	this->Centre(wxBOTH);
 
+
+	DisableGrid();
+	SetStatusText("Go to New Game to start a match");
+
+
+
 	Bind(wxEVT_MENU, &MainFrame::OnNewGame, this, ID_NewGame);
 	Bind(wxEVT_MENU, &MainFrame::OnExit, this, wxID_EXIT);
 	Bind(wxEVT_MENU, &MainFrame::OnAbout, this, wxID_ABOUT);
@@ -261,7 +267,7 @@ MainFrame::MainFrame() : wxFrame(NULL, wxID_ANY, "Tic Tac Toe") {
 	m_btnTopMid->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnTopMidClick), NULL, this);
 	m_btnTopRight->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnTopRightClick), NULL, this);
 
-	m_btnMidLeft->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnTopLeftClick), NULL, this);
+	m_btnMidLeft->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnMidLeftClick), NULL, this);
 	m_btnMidMid->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnMidMidClick), NULL, this);
 	m_btnMidRight->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MainFrame::OnBtnMidRightClick), NULL, this);
 
@@ -287,7 +293,7 @@ void  MainFrame::EnableGrid() {
 	m_btnLowMid->Enable();
 	m_btnLowRight->Enable();
 
-	// Texto dos botões
+	/* Texto dos botões*/
 	m_btnTopLeft->SetLabelText("");
 	m_btnTopMid->SetLabelText("");
 	m_btnTopRight->SetLabelText("");
@@ -361,7 +367,9 @@ void MainFrame::EndGame() {
 
 // Conecte event hadlers aos métodos do menu do topo
 void MainFrame::OnNewGame(wxCommandEvent& event) {
-	wxMessageBox("Test... New Game!", "New Game...", wxOK | wxICON_INFORMATION);
+	EnableGrid();
+	initBoard();
+	SetStatusText("It is Player 1's turn!");
 }
 
 void MainFrame::OnExit(wxCommandEvent& event) {
@@ -375,30 +383,192 @@ void MainFrame::OnAbout(wxCommandEvent& event) {
 
 // Eventos dos Botões
 void MainFrame::OnBtnTopLeftClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Top Left!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnTopLeft->IsEnabled()) {
+		board[0][0] = player;
+		m_btnTopLeft->Disable();
+		if (player == 1) {
+			m_btnTopLeft->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnTopLeft->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnTopMidClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Top Mid!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnTopMid->IsEnabled()) {
+		board[0][1] = player;
+		m_btnTopMid->Disable();
+		if (player == 1) {
+			m_btnTopMid->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnTopMid->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnTopRightClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Top Right!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnTopRight->IsEnabled()) {
+		board[0][2] = player;
+		m_btnTopRight->Disable();
+		if (player == 1) {
+			m_btnTopRight->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnTopRight->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnMidLeftClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Mid Left!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnMidLeft->IsEnabled()) {
+		board[1][0] = player;
+		m_btnMidLeft->Disable();
+		if (player == 1) {
+			m_btnMidLeft->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnMidLeft->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnMidMidClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Mid Mid!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnMidMid->IsEnabled()) {
+		board[1][1] = player;
+		m_btnMidMid->Disable();
+		if (player == 1) {
+			m_btnMidMid->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnMidMid->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnMidRightClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Mid Right!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnMidRight->IsEnabled()) {
+		board[1][2] = player;
+		m_btnMidRight->Disable();
+		if (player == 1) {
+			m_btnMidRight->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnMidRight->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnLowLeftClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Low Left!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnLowLeft->IsEnabled()) {
+		board[2][0] = player;
+		m_btnLowLeft->Disable();
+		if (player == 1) {
+			m_btnLowLeft->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnLowLeft->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnLowMidClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Low Mid!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnLowMid->IsEnabled()) {
+		board[2][1] = player;
+		m_btnLowMid->Disable();
+		if (player == 1) {
+			m_btnLowMid->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnLowMid->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 void MainFrame::OnBtnLowRightClick(wxCommandEvent& event) {
-	wxMessageBox("Button: Low Right!", "Deseja marcar essa posição?", wxOK | wxICON_INFORMATION);
+	if (m_btnLowRight->IsEnabled()) {
+		board[2][2] = player;
+		m_btnLowRight->Disable();
+		if (player == 1) {
+			m_btnLowRight->SetLabelText("X");
+			player = 2;
+		}
+		else {
+			if (player == 2) {
+				m_btnLowRight->SetLabelText("O");
+				player = 1;
+			}
+		}
+	}
+	turnCounter++;
+	victorious = checkBoard();
+	if (victorious != 0 || turnCounter >= 9) {
+		EndGame();
+	}
 }
 
