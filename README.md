@@ -1,6 +1,6 @@
 # Tic Tac Toe Game em C++ com wxWidgets
 
-Este repositório contém a implementação de um jogo da velha em C++ usando a biblioteca wxWidgets para criar uma interface gráfica. O código fornece uma interface simples e funcional para jogar o jogo da velha entre dois jogadores humanos.O código foi instruído pelo professor @pietromartinso. 
+Este repositório contém a implementação de um jogo da velha em C++ usando a biblioteca wxWidgets para criar uma interface gráfica. O código fornece uma interface simples e funcional para jogar o jogo da velha entre dois jogadores humanos.
 
 ## Regras do jogo
 
@@ -13,10 +13,6 @@ Este repositório contém a implementação de um jogo da velha em C++ usando a 
 
 O código inicializa o tabuleiro do jogo, gerencia o estado do jogo e manipula a interface do usuário usando wxWidgets. As principais funções são `initBoard()` para inicializar o tabuleiro e `checkBoard()` para verificar o estado atual do tabuleiro para determinar se há um vencedor ou um empate. O programa também inclui manipuladores de eventos para cliques de botão e ações de menu, habilitando ou desabilitando a grade e gerenciando o final do jogo.
 A classe `ticTacToe` herda de `wxApp` e é responsável por inicializar a janela principal do jogo. A classe `MainFrame` herda de `wxFrame` e manipula os elementos da interface do usuário, como botões e menus.
-
-## Créditos
-
-Essa implementação do Tic Tac Toe foi instruída pelo professor @pietromartinso.
 
 ## Código
 
@@ -43,3 +39,7 @@ Os métodos `OnBtnTopLeftClick()`, `OnBtnTopMidClick()`, `OnBtnTopRightClick()`,
 - Crie uma branch com as suas alterações.
 - Faça um pull request para a branch principal.
 - Agradeço a sua contribuição para este projeto!
+
+## Créditos
+
+Essa implementação do Tic Tac Toe foi instruída pelo professor @pietromartinso.
